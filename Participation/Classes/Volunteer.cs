@@ -9,6 +9,6 @@ namespace Participation.Classes
     class Volunteer : User
     {
         public List<Availability> Availabilities { get; private set; }
-        public string BOG { get; private set; }
+        public string VOG { get; private set; }
     }
 }
