@@ -12,6 +12,7 @@ namespace Participation.Classes
         public List<Message> Messages { get; private set; }
         public Volunteer Volunteer { get; private set; }
 
+        //test
         public List<Message> GetMessages(DateTime from, DateTime till)
         {
             return null;
