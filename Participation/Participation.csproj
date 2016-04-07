@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\GlobalVariables.cs" />
+    <Compile Include="Data\RequestSQLContext.cs" />
     <Compile Include="Logic\RequestRepository.cs" />
     <Compile Include="Classes\Account.cs" />
     <Compile Include="Classes\Admin.cs" />
