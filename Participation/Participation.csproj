@@ -33,6 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Oracle.DataAccess, Version=4.112.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=AMD64" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,16 +47,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\Account.cs" />
-    <Compile Include="Classes\Admin.cs" />
-    <Compile Include="Classes\Availability.cs" />
-    <Compile Include="Classes\Chat.cs" />
-    <Compile Include="Classes\Client.cs" />
-    <Compile Include="Classes\Message.cs" />
-    <Compile Include="Classes\Request.cs" />
-    <Compile Include="Classes\Response.cs" />
-    <Compile Include="Classes\User.cs" />
-    <Compile Include="Classes\Volunteer.cs" />
+    <Compile Include="Forms\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\RegistreerVrijwilliger.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\RegistreerVrijwilliger.Designer.cs">
+      <DependentUpon>RegistreerVrijwilliger.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Account.cs" />
+    <Compile Include="Models\Admin.cs" />
+    <Compile Include="Models\Availability.cs" />
+    <Compile Include="Models\Chat.cs" />
+    <Compile Include="Models\Client.cs" />
+    <Compile Include="Models\Message.cs" />
+    <Compile Include="Models\Request.cs" />
+    <Compile Include="Models\Response.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\Volunteer.cs" />
+    <Compile Include="Databases\Database.cs" />
     <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,11 +84,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Meeting.resx">
       <DependentUpon>Meeting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RegistreerVrijwilliger.resx">
+      <DependentUpon>RegistreerVrijwilliger.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -97,6 +117,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Databases\Oracle.DataAccess.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Logic\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
