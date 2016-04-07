@@ -10,6 +10,11 @@ namespace Participation.Classes
     {
         public DateTime Date { get; private set; }
         public string Description { get; private set; }
-        public Volunteer Volunteer { get; private set; }
+        public User Volunteer { get; private set; }
+
+        public Response(string description)
+        {
+            this.Volunteer = GlobalVariables.ActiveAccount;
+        }
     }
 }
