@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Participation.Classes
+namespace Participation.Data
 {
-    public class Admin : Account
+    public interface IRequestContext
     {
-
+        void Cycle();
     }
 }

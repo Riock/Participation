@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Participation.Classes
 {
-    class Message
+    public class Message
     {
         public Account Reciever { get; set; }
         public Account Sender { get; set; }

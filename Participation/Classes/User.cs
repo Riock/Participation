@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Participation.Classes
 {
-    class User : Account
+    public class User : Account
     {
         public bool HasCar { get; private set; }
         public bool HasLicence { get; private set; }

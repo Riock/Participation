@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Participation.Classes
 {
-    class Client
+    public class Client
     {
         public bool OvPossibility { get; private set; }
         public List<Request> Requests { get; private set; }

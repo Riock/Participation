@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Participation.Classes
 {
-    class Response
+    public class Response
     {
         public DateTime Date { get; private set; }
         public string Description { get; private set; }

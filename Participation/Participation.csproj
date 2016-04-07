@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Logic\RequestRepository.cs" />
     <Compile Include="Classes\Account.cs" />
     <Compile Include="Classes\Admin.cs" />
     <Compile Include="Classes\Availability.cs" />
@@ -54,13 +55,27 @@
     <Compile Include="Classes\Message.cs" />
     <Compile Include="Classes\Request.cs" />
     <Compile Include="Classes\Response.cs" />
+    <Compile Include="Classes\Temp.cs" />
     <Compile Include="Classes\User.cs" />
     <Compile Include="Classes\Volunteer.cs" />
+    <Compile Include="Data\IRequestContext.cs" />
+    <Compile Include="Forms\Hulpvraag.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Hulpvraag.Designer.cs">
+      <DependentUpon>Hulpvraag.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MakeHulpvraag.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MakeHulpvraag.Designer.cs">
+      <DependentUpon>MakeHulpvraag.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Meeting.cs">
       <SubType>Form</SubType>
@@ -70,8 +85,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\Hulpvraag.resx">
+      <DependentUpon>Hulpvraag.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MakeHulpvraag.resx">
+      <DependentUpon>MakeHulpvraag.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Meeting.resx">
       <DependentUpon>Meeting.cs</DependentUpon>
@@ -98,6 +119,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -6,15 +6,72 @@ using System.Threading.Tasks;
 
 namespace Participation.Classes
 {
-    class Request
+    public enum Repeat
+    {
+        Daily, Weekly, Monthly
+    }
+
+    public class Request
     {
         public bool Urgent { get; private set; }
         public Client Client { get; private set; }
-        public DateTime From { get; private set; }
-        public DateTime Till { get; private set; }
+        public DateTime Date { get;  set; }
+        public DateTime FollowupDate { get;  set; }
         public List<Response> Responses { get; private set; }
+        public List<string> Tags { get; private set; }
         public string Description { get; private set; }
         public string Location { get; private set; }
-        public string Title { get; private set; }        
+        public string Title { get; private set; }
+        public Repeat GetRepeat { get { return repeat; } private set {; } }
+
+        private Repeat repeat;
+        
+        public Request(string title, DateTime dateBegin, bool urgent, string description, Client client, Repeat repeat, List<string> tags)
+        {
+            this.Title = title;
+            this.Date = dateBegin;
+            this.Urgent = urgent;
+            this.Description = description;
+            this.Client = client;
+            this.repeat = repeat;
+            this.Tags = tags;
+
+            if (repeat == Repeat.Daily)
+            {
+                this.FollowupDate = this.Date;
+                this.FollowupDate.AddDays(1);
+            }
+            else if (repeat == Repeat.Weekly)
+            {
+                this.FollowupDate = this.Date;
+                this.FollowupDate.AddDays(7);
+            }
+            else if (repeat == Repeat.Weekly)
+            {
+                this.FollowupDate = this.Date;
+                this.FollowupDate.AddMonths(1);
+            }            
+        }
+
+        /// <summary>
+        /// Update de datums, zodat de From en Till kloppen. Voer dit uit als de hulpvraag geweest is
+        /// </summary>
+        public void Cycle()
+        {
+            this.Date = this.FollowupDate;
+
+            if (repeat == Repeat.Daily)
+            {
+                this.FollowupDate.AddDays(1);
+            }
+            else if (repeat == Repeat.Weekly)
+            {
+                this.FollowupDate.AddDays(7);
+            }
+            else if (repeat == Repeat.Weekly)
+            {
+                this.FollowupDate.AddMonths(1);
+            }
+        }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Participation.Classes
 {
-    class Account
+    public class Account
     {
         public string Email { get; private set; }
         public string Password { get; private set; }

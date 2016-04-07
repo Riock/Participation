@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Participation.Classes
 {
-    public class Availability
+    public class Temp
     {
-        public DateTime From { get; private set; }
-        public DateTime Till { get; private set; }
+        static public List<Request> Requests = new List<Request>();
     }
 }

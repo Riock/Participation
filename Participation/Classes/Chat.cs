@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Participation.Classes
 {
-    class Chat
+    public class Chat
     {
         public Client Client { get; private set; }
         public List<Message> Messages { get; private set; }
