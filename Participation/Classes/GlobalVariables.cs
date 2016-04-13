@@ -9,5 +9,7 @@ namespace Participation.Classes
     public class GlobalVariables
     {
         public static Account ActiveAccount;
+        public static Client ActiveClient;
+        public static Volunteer Volunteer;
     }
 }

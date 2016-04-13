@@ -44,6 +44,8 @@
             this.btnAccept = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.cbUrgent = new System.Windows.Forms.CheckBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.tbLocation = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // tbTitle
@@ -142,7 +144,7 @@
             // 
             // tbDescription
             // 
-            this.tbDescription.Location = new System.Drawing.Point(94, 208);
+            this.tbDescription.Location = new System.Drawing.Point(94, 249);
             this.tbDescription.Multiline = true;
             this.tbDescription.Name = "tbDescription";
             this.tbDescription.Size = new System.Drawing.Size(330, 177);
@@ -151,7 +153,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 188);
+            this.label6.Location = new System.Drawing.Point(12, 229);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(211, 13);
             this.label6.TabIndex = 12;
@@ -159,7 +161,7 @@
             // 
             // btnAccept
             // 
-            this.btnAccept.Location = new System.Drawing.Point(349, 404);
+            this.btnAccept.Location = new System.Drawing.Point(349, 445);
             this.btnAccept.Name = "btnAccept";
             this.btnAccept.Size = new System.Drawing.Size(75, 23);
             this.btnAccept.TabIndex = 13;
@@ -169,7 +171,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(12, 404);
+            this.btnCancel.Location = new System.Drawing.Point(12, 445);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 14;
@@ -186,11 +188,29 @@
             this.cbUrgent.Text = "Urgent";
             this.cbUrgent.UseVisualStyleBackColor = true;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(12, 193);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(42, 13);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "Locatie";
+            // 
+            // tbLocation
+            // 
+            this.tbLocation.Location = new System.Drawing.Point(94, 190);
+            this.tbLocation.Name = "tbLocation";
+            this.tbLocation.Size = new System.Drawing.Size(330, 20);
+            this.tbLocation.TabIndex = 17;
+            // 
             // MakeHulpvraag
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(436, 439);
+            this.ClientSize = new System.Drawing.Size(436, 485);
+            this.Controls.Add(this.tbLocation);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.cbUrgent);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnAccept);
@@ -232,5 +252,7 @@
         private System.Windows.Forms.Button btnAccept;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.CheckBox cbUrgent;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox tbLocation;
     }
 }

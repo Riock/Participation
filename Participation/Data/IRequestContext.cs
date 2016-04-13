@@ -12,5 +12,11 @@ namespace Participation.Data
         void Cycle(Request request);
 
         void GetCurrentRequestData();
+
+        Client GetClientByID(Account account);
+
+        void Insert(Account account, string title, string text, string location, DateTime from, DateTime till, bool urgent, Repeat repeat);
+
+        void InsertReview(Account subject, Account author, string Text, DateTime date, int grade);
     }
 }

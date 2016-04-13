@@ -37,5 +37,40 @@ namespace Participation.Logic
                 request.FollowupDate.AddMonths(1);
             }
         }
+
+        //public void AddRequest(string title, DateTime date, bool urgent, string description, Client client, string repeat, string tagsString)
+        //{
+        //    Repeat rep;
+        //    List<string> tags = new List<string>();
+
+        //    if (repeat == Repeat.Daily.ToString())
+        //    {
+        //        rep = Repeat.Daily;
+        //    }
+        //    else if (repeat == Repeat.Weekly.ToString())
+        //    {
+        //        rep = Repeat.Weekly;
+        //    }
+        //    else if (repeat == Repeat.Monthly.ToString())
+        //    {
+        //        rep = Repeat.Monthly;
+        //    }
+        //    else
+        //    {
+        //        rep = Repeat.Never;
+        //    }
+
+        //    tags = tagsString.Split(',').ToList<string>();
+        //}
+
+        public Client GetClientByID(Account account)
+        {
+            return context.GetClientByID(account);
+        }
+
+        public void Insert(Account account, string title, string text, string location, DateTime from, DateTime till, bool urgent, Repeat repeat)
+        {
+            context.Insert(account, title, text, location, from, till, urgent, repeat);
+        }
     }
 }

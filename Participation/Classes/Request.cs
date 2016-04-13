@@ -8,7 +8,7 @@ namespace Participation.Classes
 {
     public enum Repeat
     {
-        Daily, Weekly, Monthly
+        Daily, Weekly, Monthly, Never
     }
 
     public class Request
