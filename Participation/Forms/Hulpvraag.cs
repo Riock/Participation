@@ -11,7 +11,7 @@ using Participation.Classes;
 using Participation.Logic;
 using Participation.Data;
 
-namespace ParticipationUI
+namespace Participation
 {
     public partial class Hulpvraag : Form
     {
@@ -38,6 +38,10 @@ namespace ParticipationUI
 
             refresh();
         }
+        public Hulpvraag()
+        {
+            InitializeComponent();
+        }
 
         private void refresh()
         {
@@ -47,6 +51,12 @@ namespace ParticipationUI
             {
                 response.ToString();
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            
+            repo.Insert(new Account(4, "test", "test@ggf", "hunter12"), "title", "text", "location", dtDate.Value, dtTill.Value, true, Repeat.Monthly);
         }
     }
 }

@@ -6,11 +6,15 @@ using System.Threading.Tasks;
 using Participation.Classes;
 using Participation.Data;
 using Oracle.DataAccess.Client;
+using Oracle.DataAccess;
+using System.Windows.Forms;
 
 namespace Participation.Data
 {
     public class RequestSQLContext : IRequestContext
     {
+        Database database = new Database();
+
         public void Cycle(Request request)
         {
             throw new NotImplementedException();
@@ -19,29 +23,67 @@ namespace Participation.Data
 
         public Client GetClientByID(Account account)
         {
+            
             Client ret;
 
-            //try
-            //{
-            //    database.OpenConnection();
-            //    database.Query = "select a.username, a.email, u.name, a.password, u.phone, u.adress, u.housenumber, u.city, u.zipcode, u.hascar, u.haslicence, u.birthdate, u.picture, u.usertype, c.OVPossibility, c.handicap  
-            //    from CLIENT c, USERINFO u, ACCOUNT a where c.accountid = u.accountid and u.accountid = a.accountid and c.ACCOUNTID = :id"; 
+            string username = "";
+            string email = "";
+            string name = "";
+            string password = "";
+            string phone = "";
+            string adress = "";
+            int housenumber = 0;
+            string city = "";
+            string zipcode = "";
+            int hascar = 0;
+            int haslicence = 0;
+            DateTime date = DateTime.Now;
+            string picture = "";
+            string usertype = "";
+            int hasov = 0;
+            string handicap = "";
 
-            //    database.Command.Parameters.Add(new OracleParameter("id", account.ID));
+            try
+            {
+                database.OpenConnection();
+                database.Query = "select a.username, a.email, u.name, a.password, u.phone, u.adress, u.housenumber, u.city, u.zipcode, u.hascar, u.haslicence, u.birthdate, u.picture, u.usertype, c.OVPossibility, c.handicap from CLIENT c, USERINFO u, ACCOUNT a where c.accountid = u.accountid and u.accountid = a.accountid and c.ACCOUNTID = :id"; 
+
+                database.Command.Parameters.Add(new OracleParameter("id", account.ID));
 
 
-            //    database.Command.ExecuteNonQuery();
-            //}
-            //catch (OracleException e)
-            //{
-            //    MessageBox.Show(e.Message);
-            //    throw;
-            //}
-            //finally
-            //{
-            //    database.Commit();
-            //    database.CloseConnection();
-            //}
+                OracleDataReader reader = database.Command.ExecuteReader();
+
+                
+
+                while (reader.Read())
+                {
+                    username = (string)reader["username"];
+                    email = (string)reader["email"];
+                    name = (string)reader["name"];
+                    password = (string)reader["password"];
+                    phone = (string)reader["phone"];
+                    adress = (string)reader["adress"];
+                    housenumber = (int)reader["housenumber"];
+                    city = (string)reader["city"];
+                    zipcode = (string)reader["zipcode"];
+                    hascar = (int)reader["hascar"];
+                    date = (DateTime)reader["birthdate"];
+                    picture = (string)reader["picture"];
+                    usertype = (string)reader["usertype"];
+                    hasov = (int)reader["OVPossibility"];
+                    handicap = (string)reader["handicap"];
+                }
+            }
+            catch (OracleException e)
+            {
+                MessageBox.Show(e.Message);
+                throw;
+            }
+            finally
+            {
+                database.Commit();
+                database.CloseConnection();
+            }
 
             List<string> Queryresult = new List<string>();
             bool retCar;
@@ -51,7 +93,7 @@ namespace Participation.Data
 
             retDate = Convert.ToDateTime(Queryresult[11]);
 
-            if (Queryresult[9] == "0")
+            if (hascar == 0)
             {
                 retCar = false;
             }
@@ -59,7 +101,7 @@ namespace Participation.Data
             {
                 retCar = true;
             }
-            if (Queryresult[10] == "0")
+            if (haslicence == 0)
             {
                 retLicence = false;
             }
@@ -67,7 +109,7 @@ namespace Participation.Data
             {
                 retLicence = true;
             }
-            if (Queryresult[14] == "0")
+            if (hasov == 0)
             {
                 retOV = false;
             }
@@ -76,7 +118,7 @@ namespace Participation.Data
                 retOV = true;
             }
 
-            ret = new Client(account.ID, Queryresult[0], Queryresult[1], Queryresult[2], Queryresult[3], Queryresult[4], Queryresult[5], Convert.ToInt32(Queryresult[6]), Queryresult[7], Queryresult[8], retCar, retLicence, retDate /*dataformat?*/, Queryresult[12] /*byte?*/, Queryresult[13], retOV, Queryresult[15]);
+            ret = new Client(account.ID, username, email, name, password, phone, adress, housenumber, city, zipcode, retCar, retLicence, date, picture, usertype, retOV, handicap);
             return ret;
         }
 
@@ -143,21 +185,54 @@ namespace Participation.Data
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// insert a new request into the databse
+        /// </summary>
+        /// <param name="account">the account that owns the request</param>
+        /// <param name="title"></param>
+        /// <param name="text">the content of the request</param>
+        /// <param name="location">the location at wich the request will be held</param>
+        /// <param name="from">the start date</param>
+        /// <param name="till">followup date</param>
+        /// <param name="urgent">if the request is urgent or not</param>
+        /// <param name="repeat">how freqeuntly the request will be repeated</param>
         public void Insert(Account account, string title, string text, string location, DateTime from, DateTime till, bool urgent, Repeat repeat)
         {
-            //            insert into REQUEST(AccountID, Title, Text, Location, FromWhen, Till, Urgent, RequestRepeat)
-            //values(:id, :title, :text, :location, :fromwhen, :till, :urgent, :repeatreq);
-
-            string _id = Convert.ToString(account.ID);
-            string _from = from.ToString();
-            string _till = till.ToString();
-            string _urgent = "0";
-            if (urgent)
+            using (database.OpenConnection())
             {
-                _urgent = "1";
-            }
+                try
+                {
+                    int _urgent = 0;
+                    if (urgent)
+                    {
+                        _urgent = 1;
+                    }
 
-            throw new NotImplementedException();
+                    MessageBox.Show(from.ToString());
+                    database.Query = "insert into REQUEST(AccountID, Title, Text, Location, FromWhen, Till, Urgent, RequestRepeat, requestid)" 
+                                    + "values(:id, :title, :text, :location, to_date('24-08-2013', 'dd-mm-yyyy'), to_date('24-08-2013', 'dd-mm-yyyy'), :urgent, :repeatreq, :id)";
+                    database.Command.Parameters.Add(new OracleParameter("id", account.ID));
+                    database.Command.Parameters.Add(new OracleParameter("title", title));
+                    database.Command.Parameters.Add(new OracleParameter("text", text));
+                    database.Command.Parameters.Add(new OracleParameter("location", location));
+                    //database.Command.Parameters.Add(new OracleParameter("fromwhen", from));
+                    //database.Command.Parameters.Add(new OracleParameter("till", till));
+                    database.Command.Parameters.Add(new OracleParameter("urgent", _urgent));
+                    database.Command.Parameters.Add(new OracleParameter("repeatreq", 7));
+                    database.Command.Parameters.Add(new OracleParameter("id", 1));
+
+                    database.Command.ExecuteNonQuery();
+                }
+                catch (OracleException e)
+                {
+                    MessageBox.Show(e.Message);
+                }
+                finally
+                {
+                    database.Commit();
+                    database.CloseConnection();
+                }
+            }
         }
 
         public void InsertReview(Account subject, Account author, string Text, DateTime date, int grade)

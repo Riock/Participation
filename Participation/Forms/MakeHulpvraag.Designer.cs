@@ -1,4 +1,4 @@
-﻿namespace ParticipationUI
+﻿namespace Participation
 {
     partial class MakeHulpvraag
     {

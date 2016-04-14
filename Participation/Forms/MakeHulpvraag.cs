@@ -11,7 +11,7 @@ using Participation.Classes;
 using Participation.Logic;
 using Participation.Data;
 
-namespace ParticipationUI
+namespace Participation
 {
     public partial class MakeHulpvraag : Form
     {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Participation.Classes
 {
-    public class Admin : Account
+    public class Admin 
     {
 
     }

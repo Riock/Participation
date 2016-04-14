@@ -22,10 +22,5 @@ namespace Participation.Classes
             this.Email = email;
             this.Password = password;
         }
-        public Account(string username, string email, string password)
-            : this(-1, username, email, password)
-        {
-
-        }
     }
 }

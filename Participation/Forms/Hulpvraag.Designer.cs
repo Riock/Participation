@@ -1,4 +1,4 @@
-﻿namespace ParticipationUI
+﻿namespace Participation
 {
     partial class Hulpvraag
     {
@@ -30,10 +30,6 @@
         {
             this.label5 = new System.Windows.Forms.Label();
             this.cbRepeat = new System.Windows.Forms.ComboBox();
-            this.tbTill = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.tbFrom = new System.Windows.Forms.TextBox();
             this.dtDate = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -44,6 +40,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox6 = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.dtTill = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // label5
@@ -68,38 +66,6 @@
             this.cbRepeat.Size = new System.Drawing.Size(231, 21);
             this.cbRepeat.TabIndex = 20;
             this.cbRepeat.Text = "Nooit";
-            // 
-            // tbTill
-            // 
-            this.tbTill.Location = new System.Drawing.Point(225, 90);
-            this.tbTill.Name = "tbTill";
-            this.tbTill.Size = new System.Drawing.Size(100, 20);
-            this.tbTill.TabIndex = 19;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(200, 93);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(19, 13);
-            this.label4.TabIndex = 18;
-            this.label4.Text = "tot";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(53, 93);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(26, 13);
-            this.label3.TabIndex = 17;
-            this.label3.Text = "Van";
-            // 
-            // tbFrom
-            // 
-            this.tbFrom.Location = new System.Drawing.Point(94, 90);
-            this.tbFrom.Name = "tbFrom";
-            this.tbFrom.Size = new System.Drawing.Size(100, 20);
-            this.tbFrom.TabIndex = 16;
             // 
             // dtDate
             // 
@@ -182,11 +148,30 @@
             this.textBox6.TabIndex = 25;
             this.textBox6.Text = "Typ hier Uw bericht";
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(203, 713);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 27;
+            this.button2.Text = "Verzenden";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // dtTill
+            // 
+            this.dtTill.Location = new System.Drawing.Point(94, 85);
+            this.dtTill.Name = "dtTill";
+            this.dtTill.Size = new System.Drawing.Size(200, 20);
+            this.dtTill.TabIndex = 28;
+            // 
             // Hulpvraag
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(442, 746);
+            this.ClientSize = new System.Drawing.Size(440, 746);
+            this.Controls.Add(this.dtTill);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox6);
             this.Controls.Add(this.label6);
@@ -194,10 +179,6 @@
             this.Controls.Add(this.tbDescription);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.cbRepeat);
-            this.Controls.Add(this.tbTill);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.tbFrom);
             this.Controls.Add(this.dtDate);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -214,10 +195,6 @@
 
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cbRepeat;
-        private System.Windows.Forms.TextBox tbTill;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox tbFrom;
         private System.Windows.Forms.DateTimePicker dtDate;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -228,5 +205,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.DateTimePicker dtTill;
     }
 }
