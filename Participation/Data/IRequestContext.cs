@@ -19,7 +19,7 @@ namespace Participation.Data
 
         void InsertReview(Account subject, Account author, string Text, DateTime date, int grade);
 
-        List<Response> GetResponse(Request request);
+        List<Response> GetResponses(Request request);
 
         User GetUser(int id);
     }

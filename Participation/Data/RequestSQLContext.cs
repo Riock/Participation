@@ -85,7 +85,7 @@ namespace Participation.Data
             throw new NotImplementedException();
         }
 
-        public List<Response> GetResponse(Request request)
+        public List<Response> GetResponses(Request request)
         {
             //select r.responseID, r.Userid, r.DateResponse, r.Text from response r, request req 
             //where req.RequestID = r.RequestID;

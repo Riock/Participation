@@ -72,5 +72,10 @@ namespace Participation.Logic
         {
             context.Insert(account, title, text, location, from, till, urgent, repeat);
         }
+
+        public List<Response> GetResponses(Request request)
+        {
+            return context.GetResponses(request);
+        }
     }
 }

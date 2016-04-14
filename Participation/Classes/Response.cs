@@ -22,5 +22,10 @@ namespace Participation.Classes
             this.Description = description;
             this.Author = author;
         }
+
+        public override string ToString()
+        {
+            return Author.Name + Date.ToString() + Description;
+        }
     }
 }
