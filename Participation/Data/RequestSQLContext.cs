@@ -15,6 +15,7 @@ namespace Participation.Data
         {
             throw new NotImplementedException();
         }
+        
 
         public Client GetClientByID(Account account)
         {
@@ -79,8 +80,66 @@ namespace Participation.Data
             return ret;
         }
 
-        public void GetCurrentRequestData()
+        public void GetRequestData(Request request)
         {
+            throw new NotImplementedException();
+        }
+
+        public List<Response> GetResponse(Request request)
+        {
+            //select r.responseID, r.Userid, r.DateResponse, r.Text from response r, request req 
+            //where req.RequestID = r.RequestID;
+
+            List<string> queryresult = new List<string>();
+            List<Response> ret = new List<Response>();
+
+            int i = 0;
+            foreach (string s in queryresult)
+            {
+                ret.Add(new Response(Convert.ToDateTime(queryresult[i + 2]), Convert.ToInt32(queryresult[i]), request, queryresult[i + 3], GetUser(Convert.ToInt32(queryresult[i + 1]))));
+                i += 4;
+            }
+
+            return ret;
+
+            throw new NotImplementedException();
+        }
+
+        public User GetUser(int id)
+        {
+            //select a.account, a.email, a.password, u.name, u.phone, u.adress, u.housenumber, u.city, u. zipcode, u.hascar, u. haslicense, u.birthdate,
+            //u.picture, u.usertype
+            //from userinfo u, account a where :id = u.AccountID and u.accountid = a.accountid;
+
+
+            List<string> Queryresult = new List<string>();
+            bool retCar;
+            bool retLicence;
+            DateTime retDate;
+
+            retDate = Convert.ToDateTime(Queryresult[11]);
+
+            if (Queryresult[9] == "0")
+            {
+                retCar = false;
+            }
+            else
+            {
+                retCar = true;
+            }
+            if (Queryresult[10] == "0")
+            {
+                retLicence = false;
+            }
+            else
+            {
+                retLicence = true;
+            }
+           
+
+            User ret = new User(id, Queryresult[0], Queryresult[1], Queryresult[2], Queryresult[3], Queryresult[4], Queryresult[5], Convert.ToInt32(Queryresult[6]), Queryresult[7], Queryresult[8], retCar, retLicence, retDate /*dataformat?*/, Queryresult[12] /*byte?*/, Queryresult[13]);
+            return ret;
+
             throw new NotImplementedException();
         }
 

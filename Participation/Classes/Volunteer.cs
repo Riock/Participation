@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Participation.Classes
 {
-    public class Volunteer : User
+    public class Volunteer
     {
         public List<Availability> Availabilities { get; private set; }
         public string VOG { get; private set; }

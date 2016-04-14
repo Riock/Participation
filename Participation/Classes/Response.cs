@@ -9,12 +9,18 @@ namespace Participation.Classes
     public class Response
     {
         public DateTime Date { get; private set; }
+        public int ID { get; private set; }
+        public Request Request { get; private set; }
         public string Description { get; private set; }
-        public User Volunteer { get; private set; }
+        public User Author { get; private set; }
 
-        public Response(string description)
+        public Response(DateTime date, int id, Request request, string description, User author)
         {
-            this.Volunteer = GlobalVariables.ActiveAccount;
+            this.Date = date;
+            this.ID = id;
+            this.Request = request;
+            this.Description = description;
+            this.Author = author;
         }
     }
 }

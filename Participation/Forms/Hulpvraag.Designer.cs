@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             this.label5 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.cbRepeat = new System.Windows.Forms.ComboBox();
+            this.tbTill = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.tbFrom = new System.Windows.Forms.TextBox();
+            this.dtDate = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.tbTags = new System.Windows.Forms.TextBox();
+            this.tbTitle = new System.Windows.Forms.TextBox();
+            this.tbDescription = new System.Windows.Forms.TextBox();
+            this.lbReaction = new System.Windows.Forms.ListBox();
             this.label6 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox6 = new System.Windows.Forms.TextBox();
@@ -55,26 +55,26 @@
             this.label5.TabIndex = 21;
             this.label5.Text = "Herhalen";
             // 
-            // comboBox1
+            // cbRepeat
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cbRepeat.FormattingEnabled = true;
+            this.cbRepeat.Items.AddRange(new object[] {
             "Nooit",
             "Dagelijks",
             "Weekenlijks",
             "Maandelijks"});
-            this.comboBox1.Location = new System.Drawing.Point(94, 117);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(231, 21);
-            this.comboBox1.TabIndex = 20;
-            this.comboBox1.Text = "Nooit";
+            this.cbRepeat.Location = new System.Drawing.Point(94, 117);
+            this.cbRepeat.Name = "cbRepeat";
+            this.cbRepeat.Size = new System.Drawing.Size(231, 21);
+            this.cbRepeat.TabIndex = 20;
+            this.cbRepeat.Text = "Nooit";
             // 
-            // textBox4
+            // tbTill
             // 
-            this.textBox4.Location = new System.Drawing.Point(225, 90);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 19;
+            this.tbTill.Location = new System.Drawing.Point(225, 90);
+            this.tbTill.Name = "tbTill";
+            this.tbTill.Size = new System.Drawing.Size(100, 20);
+            this.tbTill.TabIndex = 19;
             // 
             // label4
             // 
@@ -94,19 +94,19 @@
             this.label3.TabIndex = 17;
             this.label3.Text = "Van";
             // 
-            // textBox3
+            // tbFrom
             // 
-            this.textBox3.Location = new System.Drawing.Point(94, 90);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 16;
+            this.tbFrom.Location = new System.Drawing.Point(94, 90);
+            this.tbFrom.Name = "tbFrom";
+            this.tbFrom.Size = new System.Drawing.Size(100, 20);
+            this.tbFrom.TabIndex = 16;
             // 
-            // dateTimePicker1
+            // dtDate
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(94, 59);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 15;
+            this.dtDate.Location = new System.Drawing.Point(94, 59);
+            this.dtDate.Name = "dtDate";
+            this.dtDate.Size = new System.Drawing.Size(200, 20);
+            this.dtDate.TabIndex = 15;
             // 
             // label2
             // 
@@ -126,35 +126,35 @@
             this.label1.TabIndex = 13;
             this.label1.Text = "Titel";
             // 
-            // textBox2
+            // tbTags
             // 
-            this.textBox2.Location = new System.Drawing.Point(94, 32);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(330, 20);
-            this.textBox2.TabIndex = 12;
+            this.tbTags.Location = new System.Drawing.Point(94, 32);
+            this.tbTags.Name = "tbTags";
+            this.tbTags.Size = new System.Drawing.Size(330, 20);
+            this.tbTags.TabIndex = 12;
             // 
-            // textBox1
+            // tbTitle
             // 
-            this.textBox1.Location = new System.Drawing.Point(94, 6);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(330, 20);
-            this.textBox1.TabIndex = 11;
+            this.tbTitle.Location = new System.Drawing.Point(94, 6);
+            this.tbTitle.Name = "tbTitle";
+            this.tbTitle.Size = new System.Drawing.Size(330, 20);
+            this.tbTitle.TabIndex = 11;
             // 
-            // textBox5
+            // tbDescription
             // 
-            this.textBox5.Location = new System.Drawing.Point(94, 173);
-            this.textBox5.Multiline = true;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(330, 177);
-            this.textBox5.TabIndex = 22;
+            this.tbDescription.Location = new System.Drawing.Point(94, 173);
+            this.tbDescription.Multiline = true;
+            this.tbDescription.Name = "tbDescription";
+            this.tbDescription.Size = new System.Drawing.Size(330, 177);
+            this.tbDescription.TabIndex = 22;
             // 
-            // listBox1
+            // lbReaction
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(12, 392);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(412, 277);
-            this.listBox1.TabIndex = 23;
+            this.lbReaction.FormattingEnabled = true;
+            this.lbReaction.Location = new System.Drawing.Point(12, 392);
+            this.lbReaction.Name = "lbReaction";
+            this.lbReaction.Size = new System.Drawing.Size(412, 277);
+            this.lbReaction.TabIndex = 23;
             // 
             // label6
             // 
@@ -190,19 +190,19 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox6);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.lbReaction);
+            this.Controls.Add(this.tbDescription);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.cbRepeat);
+            this.Controls.Add(this.tbTill);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.tbFrom);
+            this.Controls.Add(this.dtDate);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbTags);
+            this.Controls.Add(this.tbTitle);
             this.Name = "Hulpvraag";
             this.Text = "Hulpvraag";
             this.ResumeLayout(false);
@@ -213,18 +213,18 @@
         #endregion
 
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.ComboBox cbRepeat;
+        private System.Windows.Forms.TextBox tbTill;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.TextBox tbFrom;
+        private System.Windows.Forms.DateTimePicker dtDate;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.TextBox tbTags;
+        private System.Windows.Forms.TextBox tbTitle;
+        private System.Windows.Forms.TextBox tbDescription;
+        private System.Windows.Forms.ListBox lbReaction;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox6;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Oracle.DataAccess.Client;
 using System.Windows.Forms;
 
-namespace Participation.Databases
+namespace Participation.Data
 {
     public class Database
     {
