@@ -20,7 +20,11 @@ namespace Participation.Data
             throw new NotImplementedException();
         }
         
-
+        /// <summary>
+        /// Gets a client belonging to a specific account
+        /// </summary>
+        /// <param name="account"></param>
+        /// <returns></returns>
         public Client GetClientByID(Account account)
         {
             
@@ -32,15 +36,15 @@ namespace Participation.Data
             string password = "";
             string phone = "";
             string adress = "";
-            int housenumber = 0;
+            int housenumber = -1;
             string city = "";
             string zipcode = "";
-            int hascar = 0;
-            int haslicence = 0;
+            int hascar = -1;
+            int haslicence = -1;
             DateTime date = DateTime.Now;
             string picture = "";
             string usertype = "";
-            int hasov = 0;
+            int hasov = -1;
             string handicap = "";
 
             try
@@ -50,10 +54,7 @@ namespace Participation.Data
 
                 database.Command.Parameters.Add(new OracleParameter("id", account.ID));
 
-
-                OracleDataReader reader = database.Command.ExecuteReader();
-
-                
+                OracleDataReader reader = database.Command.ExecuteReader();                
 
                 while (reader.Read())
                 {
@@ -127,41 +128,123 @@ namespace Participation.Data
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Gets a list of responses for the given request
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         public List<Response> GetResponses(Request request)
         {
-            //select r.responseID, r.Userid, r.DateResponse, r.Text from response r, request req 
-            //where req.RequestID = r.RequestID;
-
-            List<string> queryresult = new List<string>();
             List<Response> ret = new List<Response>();
 
-            int i = 0;
-            foreach (string s in queryresult)
+            int responseID = -1;
+            int userID = -1;
+            DateTime dateResponse = DateTime.Now;
+            string text = "";
+
+            using (database.OpenConnection())
             {
-                ret.Add(new Response(Convert.ToDateTime(queryresult[i + 2]), Convert.ToInt32(queryresult[i]), request, queryresult[i + 3], GetUser(Convert.ToInt32(queryresult[i + 1]))));
-                i += 4;
+                try
+                {
+                    database.Query = "select r.responseID, r.Userid, r.DateResponse, r.Text from response r, request req where req.RequestID = r.RequestID and req.RequestID = :id";
+                    database.Command.Parameters.Add(new OracleParameter("id", request.ID));
+
+                    OracleDataReader reader = database.Command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        responseID = (int)reader["responseID"];
+                        userID = (int)reader["Userid"];
+                        dateResponse = (DateTime)reader["DateResponse"];
+                        text = (string)reader["Text"];
+
+                        ret.Add(new Response(dateResponse, responseID, request, text, GetUser(userID)));
+                    }
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message);
+                }
+                finally
+                {
+                    database.Commit();
+                    database.CloseConnection();
+                }
             }
-
             return ret;
-
-            throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// gets a user by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public User GetUser(int id)
         {
-            //select a.account, a.email, a.password, u.name, u.phone, u.adress, u.housenumber, u.city, u. zipcode, u.hascar, u. haslicense, u.birthdate,
+            //select a.accountid, a.email, a.password, u.name, u.phone, u.adress, u.housenumber, u.city, u. zipcode, u.hascar, u. haslicense, u.birthdate,
             //u.picture, u.usertype
             //from userinfo u, account a where :id = u.AccountID and u.accountid = a.accountid;
 
+            User ret;
 
-            List<string> Queryresult = new List<string>();
+            int accountid = -1;
+            string username = "";
+            string email = "";
+            string password = "";
+            string name = "";
+            string phone = "";
+            string adress = "";
+            int housenumber = -1;
+            string city = "";
+            string zipcode = "";
+            int hascar = -1;
+            int haslicence = -1;
+            DateTime birthdate = DateTime.Now;
+            string picture = "";
+            string usertype = "";
+
+            using (database.OpenConnection())
+            {
+                try
+                {
+                    database.Query = "select a.accountid, a.username, a.email, a.password, u.name, u.phone, u.adress, u.housenumber, u.city, u.zipcode, u.hascar, u.haslicense, u.birthdate,"
+                        + " u.picture, u.usertype from userinfo u, account a where :id = u.AccountID and u.accountid = a.accountid";
+                    database.Command.Parameters.Add(new OracleParameter("id", id));
+
+                    OracleDataReader reader = database.Command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        accountid = (int)reader["accountid"];
+                        username = (string)reader["username"];
+                        email = (string)reader["email"];
+                        password = (string)reader["password"];
+                        name = (string)reader["name"];
+                        phone = (string)reader["phone"];
+                        adress = (string)reader["adress"];
+                        housenumber = (int)reader["housenumber"];
+                        city = (string)reader["city"];
+                        zipcode = (string)reader["zipcode"];
+                        hascar = (int)reader["hascar"];
+                        haslicence = (int)reader["haslicence"];
+                        birthdate = (DateTime)reader["birthdate"];
+                        picture = (string)reader["picture"];
+                        usertype = (string)reader["usertype"];
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    database.Commit();
+                    database.CloseConnection();
+                }
+            }
+
             bool retCar;
             bool retLicence;
-            DateTime retDate;
 
-            retDate = Convert.ToDateTime(Queryresult[11]);
-
-            if (Queryresult[9] == "0")
+            if (hascar == 0)
             {
                 retCar = false;
             }
@@ -169,7 +252,7 @@ namespace Participation.Data
             {
                 retCar = true;
             }
-            if (Queryresult[10] == "0")
+            if (haslicence == 0)
             {
                 retLicence = false;
             }
@@ -177,12 +260,9 @@ namespace Participation.Data
             {
                 retLicence = true;
             }
-           
 
-            User ret = new User(id, Queryresult[0], Queryresult[1], Queryresult[2], Queryresult[3], Queryresult[4], Queryresult[5], Convert.ToInt32(Queryresult[6]), Queryresult[7], Queryresult[8], retCar, retLicence, retDate /*dataformat?*/, Queryresult[12] /*byte?*/, Queryresult[13]);
+            ret = new User(accountid, username, email, password, name, phone, adress, housenumber, city, zipcode, retCar, retLicence, birthdate, picture, usertype);
             return ret;
-
-            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -208,15 +288,15 @@ namespace Participation.Data
                         _urgent = 1;
                     }
 
-                    MessageBox.Show(from.ToString());
+                    //MessageBox.Show(from.ToString());
                     database.Query = "insert into REQUEST(AccountID, Title, Text, Location, FromWhen, Till, Urgent, RequestRepeat, requestid)" 
                                     + "values(:id, :title, :text, :location, to_date('24-08-2013', 'dd-mm-yyyy'), to_date('24-08-2013', 'dd-mm-yyyy'), :urgent, :repeatreq, :id)";
                     database.Command.Parameters.Add(new OracleParameter("id", account.ID));
                     database.Command.Parameters.Add(new OracleParameter("title", title));
                     database.Command.Parameters.Add(new OracleParameter("text", text));
                     database.Command.Parameters.Add(new OracleParameter("location", location));
-                    //database.Command.Parameters.Add(new OracleParameter("fromwhen", from));
-                    //database.Command.Parameters.Add(new OracleParameter("till", till));
+                    database.Command.Parameters.Add(new OracleParameter("fromwhen", from));
+                    database.Command.Parameters.Add(new OracleParameter("till", till));
                     database.Command.Parameters.Add(new OracleParameter("urgent", _urgent));
                     database.Command.Parameters.Add(new OracleParameter("repeatreq", 7));
                     database.Command.Parameters.Add(new OracleParameter("id", 1));
